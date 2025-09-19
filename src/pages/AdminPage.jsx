@@ -207,29 +207,64 @@ const AdminPage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-parchment flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-verdigris mx-auto mb-4"></div>
-                    <p className="font-mono text-charcoal">Loading your workshop...</p>
+            <div className="min-h-screen bg-parchment flex items-center justify-center relative overflow-hidden">
+                {/* Background decorative elements */}
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-20 left-16 w-4 h-4 bg-verdigris border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute top-40 right-20 w-6 h-6 bg-ink border border-charcoal shadow-sharp-sm"></div>
+                    <div className="absolute bottom-40 left-20 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute bottom-20 right-16 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
+                </div>
+                
+                <div className="text-center relative z-10">
+                    <div className="w-16 h-16 bg-verdigris border-2 border-ink shadow-sharp flex items-center justify-center mx-auto mb-6 animate-pulse">
+                        <span className="text-parchment font-serif font-bold text-xl">OL</span>
+                    </div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-verdigris mx-auto mb-6"></div>
+                    <p className="font-mono text-charcoal text-lg">Loading your workshop...</p>
+                    <div className="mt-4 flex justify-center space-x-1">
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    </div>
                 </div>
             </div>
         )
     }
 
     return (
-        <div className="min-h-screen bg-parchment">
+        <div className="min-h-screen bg-parchment relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute inset-0 opacity-15">
+                <div className="absolute top-32 left-20 w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm rotate-45"></div>
+                <div className="absolute top-64 right-32 w-4 h-4 bg-ink border border-charcoal shadow-sharp-sm"></div>
+                <div className="absolute bottom-64 left-32 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
+                <div className="absolute bottom-32 right-20 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
+                <div className="absolute top-1/2 left-16 w-8 h-8 border-2 border-ink opacity-30 rotate-45"></div>
+                <div className="absolute top-1/3 right-16 w-6 h-6 border-2 border-verdigris opacity-30"></div>
+            </div>
+            
             {/* Header */}
-            <header className="bg-parchment border-b border-ink shadow-sharp-sm">
+            <header className="bg-parchment border-b-2 border-ink shadow-sharp relative z-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-                    <div className="flex justify-between items-center py-4">
-                        <div>
-                            <h1 className="text-2xl font-serif font-bold text-charcoal">The Workshop</h1>
-                            <p className="font-mono text-ink">Welcome back, {user?.email}</p>
+                    <div className="flex justify-between items-center py-6">
+                        <div className="group">
+                            <div className="flex items-center mb-2">
+                                <div className="w-12 h-12 bg-verdigris border-2 border-ink shadow-sharp flex items-center justify-center mr-4 transition-all duration-150 ease-mechanical group-hover:shadow-sharp-sm group-hover:translate-x-1 group-hover:translate-y-1">
+                                    <span className="text-parchment font-serif font-bold text-lg">OL</span>
+                                </div>
+                                <h1 className="text-3xl font-serif font-bold text-charcoal relative">
+                                    The Workshop
+                                    <div className="absolute -bottom-1 left-0 w-16 h-1 bg-verdigris"></div>
+                                </h1>
+                            </div>
+                            <p className="font-mono text-ink text-lg ml-16">Welcome back, {user?.email}</p>
                         </div>
 
                         <div className="flex items-center space-x-4">
                             <Button
                                 variant="outline"
+                                className="transition-transform duration-150 ease-mechanical hover:scale-105"
                                 onClick={() => {
                                     if (profile?.slug) {
                                         window.open(`/${profile.slug}`, '_blank')
@@ -242,6 +277,7 @@ const AdminPage = () => {
                             </Button>
                             <Button
                                 variant="secondary"
+                                className="transition-transform duration-150 ease-mechanical hover:scale-105"
                                 onClick={handleSignOut}
                             >
                                 Sign Out
@@ -251,21 +287,26 @@ const AdminPage = () => {
                 </div>
             </header>
 
-            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-                <div className="bg-parchment border border-ink shadow-sharp">
+            <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 relative z-10">
+                <div className="bg-parchment border-2 border-ink shadow-sharp relative overflow-hidden">
+                    {/* Background accent for the main card */}
+                    <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-verdigris opacity-10"></div>
+                    
                     {/* Tabs */}
-                    <div className="border-b border-ink bg-parchment">
-                        <nav className="flex space-x-8 px-6">
+                    <div className="border-b-2 border-ink bg-parchment relative">
+                        <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-verdigris via-ink to-sienna opacity-20"></div>
+                        <nav className="flex space-x-8 px-8">
                             {tabs.map((tab) => (
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`py-4 px-1 border-b-2 font-mono font-medium text-sm transition-colors ${activeTab === tab.id
-                                        ? 'border-verdigris text-charcoal'
-                                        : 'border-transparent text-ink hover:text-charcoal hover:border-ink'
-                                        }`}
+                                    className={`py-6 px-2 border-b-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${
+                                        activeTab === tab.id
+                                            ? 'border-verdigris text-charcoal transform scale-105'
+                                            : 'border-transparent text-ink hover:text-charcoal hover:border-ink hover:scale-105'
+                                    }`}
                                 >
-                                    <span className="mr-2">{tab.icon}</span>
+                                    <span className="mr-3 text-xl group-hover:scale-110 transition-transform duration-150">{tab.icon}</span>
                                     {tab.label}
                                 </button>
                             ))}
@@ -273,7 +314,7 @@ const AdminPage = () => {
                     </div>
 
                     {/* Tab Content */}
-                    <div className="p-6 font-mono text-charcoal">
+                    <div className="p-8 font-mono text-charcoal relative">
                         {activeTab === 'content' && (
                             <ContentEditor
                                 blocks={blocks}

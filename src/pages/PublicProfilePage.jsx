@@ -137,10 +137,26 @@ const PublicProfilePage = () => {
 
     if (loading) {
         return (
-            <div className="min-h-screen bg-parchment flex items-center justify-center">
-                <div className="text-center">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-verdigris mx-auto mb-4"></div>
-                    <p className="font-mono text-ink">Loading profile...</p>
+            <div className="min-h-screen bg-parchment flex items-center justify-center relative overflow-hidden">
+                {/* Background decorative elements */}
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-20 left-16 w-4 h-4 bg-verdigris border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute top-40 right-20 w-6 h-6 bg-ink border border-charcoal shadow-sharp-sm"></div>
+                    <div className="absolute bottom-40 left-20 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute bottom-20 right-16 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
+                </div>
+                
+                <div className="text-center relative z-10">
+                    <div className="w-16 h-16 bg-verdigris border-2 border-ink shadow-sharp flex items-center justify-center mx-auto mb-6 animate-pulse">
+                        <span className="text-parchment font-serif font-bold text-xl">OL</span>
+                    </div>
+                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-verdigris mx-auto mb-6"></div>
+                    <p className="font-mono text-ink text-lg">Loading profile...</p>
+                    <div className="mt-4 flex justify-center space-x-1">
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce"></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                    </div>
                 </div>
             </div>
         )
@@ -148,11 +164,30 @@ const PublicProfilePage = () => {
 
     if (error) {
         return (
-            <div className="min-h-screen bg-parchment flex items-center justify-center">
-                <div className="text-center bg-parchment border border-ink shadow-sharp p-12">
-                    <h1 className="text-4xl font-serif font-bold text-charcoal mb-4">Profile Not Found</h1>
-                    <p className="font-mono text-ink mb-8">The profile you're looking for doesn't exist or has been removed.</p>
-                    <Button onClick={() => window.location.href = '/'}>
+            <div className="min-h-screen bg-parchment flex items-center justify-center relative overflow-hidden">
+                {/* Background decorative elements */}
+                <div className="absolute inset-0 opacity-20">
+                    <div className="absolute top-20 left-16 w-4 h-4 bg-verdigris border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute top-40 right-20 w-6 h-6 bg-ink border border-charcoal shadow-sharp-sm"></div>
+                    <div className="absolute bottom-40 left-20 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
+                    <div className="absolute bottom-20 right-16 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
+                </div>
+                
+                <div className="text-center bg-parchment border-2 border-ink shadow-sharp p-16 relative z-10 max-w-lg">
+                    <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-sienna opacity-20"></div>
+                    <div className="w-16 h-16 bg-sienna border-2 border-ink shadow-sharp flex items-center justify-center mx-auto mb-6">
+                        <span className="text-parchment font-serif font-bold text-2xl">!</span>
+                    </div>
+                    <h1 className="text-4xl font-serif font-bold text-charcoal mb-6 relative">
+                        Profile Not Found
+                        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-sienna"></div>
+                    </h1>
+                    <p className="font-mono text-ink mb-10 text-lg leading-relaxed">The profile you're looking for doesn't exist or has been removed.</p>
+                    <Button 
+                        onClick={() => window.location.href = '/'}
+                        className="transform transition-all duration-150 ease-mechanical hover:scale-105"
+                        size="large"
+                    >
                         Go to OneLink
                     </Button>
                 </div>
@@ -161,17 +196,30 @@ const PublicProfilePage = () => {
     }
 
     return (
-        <div className="min-h-screen bg-parchment">
-            <div className="max-w-2xl mx-auto px-4 py-8">
+        <div className="min-h-screen bg-parchment relative overflow-hidden">
+            {/* Decorative background elements */}
+            <div className="absolute inset-0 opacity-15">
+                <div className="absolute top-32 left-10 w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm rotate-45"></div>
+                <div className="absolute top-64 right-16 w-4 h-4 bg-ink border border-charcoal shadow-sharp-sm"></div>
+                <div className="absolute bottom-64 left-16 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
+                <div className="absolute bottom-32 right-10 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
+                <div className="absolute top-1/2 left-8 w-8 h-8 border-2 border-ink opacity-20 rotate-45"></div>
+                <div className="absolute top-1/3 right-8 w-6 h-6 border-2 border-verdigris opacity-20"></div>
+            </div>
+            
+            <div className="max-w-2xl mx-auto px-4 py-12 relative z-10">
                 {/* Profile Header */}
-                <div className="text-center mb-8 bg-parchment border border-ink shadow-sharp p-8">
+                <div className="text-center mb-12 bg-parchment border-2 border-ink shadow-sharp p-12 relative overflow-hidden group hover:shadow-sharp-sm transition-all duration-150 ease-mechanical">
+                    {/* Background accent */}
+                    <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-verdigris opacity-10"></div>
+                    
                     {profile?.avatar_url && (
-                        <div className="relative inline-block mb-4">
+                        <div className="relative inline-block mb-6">
+                            <div className="absolute inset-0 bg-verdigris border-2 border-ink shadow-sharp rounded-full transform rotate-3"></div>
                             <img
                                 src={profile.avatar_url}
                                 alt="Profile"
-                                className="w-24 h-24 border-2 border-ink shadow-sharp-inset object-cover mx-auto"
-                                style={{ borderRadius: '50%' }}
+                                className="w-32 h-32 border-2 border-ink shadow-sharp object-cover mx-auto relative z-10 rounded-full transition-transform duration-150 group-hover:scale-105"
                                 onError={(e) => {
                                     e.target.style.display = 'none'
                                 }}
@@ -179,28 +227,37 @@ const PublicProfilePage = () => {
                         </div>
                     )}
 
-                    <h1 className="text-3xl font-serif font-bold mb-2 text-charcoal">
+                    <h1 className="text-4xl md:text-5xl font-serif font-bold mb-4 text-charcoal relative">
                         {profile?.full_name || profile?.slug || 'User Profile'}
+                        <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-verdigris"></div>
                     </h1>
 
                     {profile?.bio && (
-                        <p className="text-lg font-mono text-ink max-w-md mx-auto leading-relaxed mb-4">
+                        <p className="text-xl font-mono text-ink max-w-lg mx-auto leading-relaxed mb-6">
                             {profile.bio}
                         </p>
                     )}
 
                     {profile?.status_message && (
-                        <p className="text-sm font-mono text-ink italic">
-                            {profile.status_message}
-                        </p>
+                        <div className="inline-flex items-center space-x-2 bg-verdigris bg-opacity-10 border border-verdigris px-4 py-2">
+                            <div className="w-2 h-2 bg-verdigris rounded-full animate-pulse"></div>
+                            <p className="font-mono text-ink italic">
+                                {profile.status_message}
+                            </p>
+                        </div>
                     )}
                 </div>
 
                 {/* Content Blocks */}
-                <div className="space-y-4 mb-8">
+                <div className="space-y-6 mb-12">
                     {blocks.length === 0 ? (
-                        <div className="text-center py-12 bg-parchment border border-ink shadow-sharp">
-                            <p className="text-lg font-mono text-ink">No content to display yet.</p>
+                        <div className="text-center py-16 bg-parchment border-2 border-ink shadow-sharp relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-ink opacity-10"></div>
+                            <div className="w-16 h-16 bg-ink border-2 border-charcoal shadow-sharp flex items-center justify-center mx-auto mb-6">
+                                <span className="text-parchment font-serif font-bold text-2xl">📄</span>
+                            </div>
+                            <p className="text-xl font-mono text-ink">No content to display yet.</p>
+                            <p className="text-sm font-mono text-ink opacity-70 mt-2">Check back later for updates!</p>
                         </div>
                     ) : (
                         blocks.map((block, index) => renderBlock(block, index))
@@ -209,24 +266,38 @@ const PublicProfilePage = () => {
 
                 {/* AMA Section */}
                 {questions.length > 0 && (
-                    <div className="mb-8">
-                        <h2 className="text-2xl font-serif font-bold mb-6 text-center text-charcoal">
-                            Ask Me Anything
-                        </h2>
+                    <div className="mb-12">
+                        <div className="text-center mb-10">
+                            <h2 className="text-3xl md:text-4xl font-serif font-bold text-charcoal relative inline-block">
+                                Ask Me Anything
+                                <div className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 bg-verdigris"></div>
+                            </h2>
+                            <p className="font-mono text-ink mt-4 text-lg">Explore recent conversations</p>
+                        </div>
 
-                        <div className="space-y-4 mb-6">
-                            {questions.slice(0, 3).map((qa) => (
-                                <div key={qa.id} className="bg-parchment border border-ink shadow-sharp p-6">
-                                    <p className="font-serif italic text-ink mb-3">Q: {qa.question_text}</p>
-                                    <p className="font-mono text-charcoal">A: {qa.answer_text}</p>
+                        <div className="space-y-6 mb-8">
+                            {questions.slice(0, 3).map((qa, index) => (
+                                <div key={qa.id} className="bg-parchment border-2 border-ink shadow-sharp p-8 group hover:shadow-sharp-sm hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical relative overflow-hidden">
+                                    <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-verdigris opacity-20"></div>
+                                    <div className="absolute top-4 left-4 w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm flex items-center justify-center text-parchment font-mono font-bold text-sm">
+                                        Q
+                                    </div>
+                                    <p className="font-serif italic text-ink mb-4 text-lg leading-relaxed ml-10">" {qa.question_text} "</p>
+                                    <div className="flex items-start space-x-3">
+                                        <div className="w-6 h-6 bg-ink border border-charcoal shadow-sharp-sm flex items-center justify-center text-parchment font-mono font-bold text-sm flex-shrink-0">
+                                            A
+                                        </div>
+                                        <p className="font-mono text-charcoal text-lg leading-relaxed">{qa.answer_text}</p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
 
                         {questions.length > 3 && (
-                            <div className="text-center mb-4">
+                            <div className="text-center mb-6">
                                 <Button
                                     variant="outline"
+                                    className="transition-transform duration-150 ease-mechanical hover:scale-105"
                                     onClick={() => setShowAMA(true)}
                                 >
                                     View All Questions ({questions.length})
@@ -237,19 +308,35 @@ const PublicProfilePage = () => {
                 )}
 
                 {/* Ask Question Button */}
-                <div className="text-center space-y-4">
-                    <div className="flex flex-col sm:flex-row gap-3 justify-center">
+                <div className="text-center space-y-6 mb-16">
+                    <div className="flex flex-col sm:flex-row gap-4 justify-center">
                         <Button
+                            className="transition-transform duration-150 ease-mechanical hover:scale-105"
                             onClick={() => setShowAMA(true)}
+                            size="large"
                         >
-                            Ask a Question
+                            💬 Ask a Question
                         </Button>
                         <Button
                             variant="outline"
+                            className="transition-transform duration-150 ease-mechanical hover:scale-105"
                             onClick={() => setShowQRCode(true)}
+                            size="large"
                         >
                             📱 Share QR Code
                         </Button>
+                    </div>
+                    
+                    <div className="flex items-center justify-center space-x-4 text-ink font-mono text-sm">
+                        <div className="flex items-center space-x-2">
+                            <span className="w-2 h-2 bg-verdigris rounded-full"></span>
+                            <span>Free to ask</span>
+                        </div>
+                        <span className="opacity-50">•</span>
+                        <div className="flex items-center space-x-2">
+                            <span className="w-2 h-2 bg-verdigris rounded-full"></span>
+                            <span>Get answers</span>
+                        </div>
                     </div>
                 </div>
 
@@ -323,13 +410,19 @@ const PublicProfilePage = () => {
                 />
 
                 {/* Footer */}
-                <div className="text-center mt-12 pt-8 border-t border-ink">
-                    <p className="text-sm font-mono text-ink">
-                        Powered by{' '}
-                        <a href="/" className="text-verdigris hover:underline">
-                            OneLink
-                        </a>
-                    </p>
+                <div className="text-center pt-12 border-t-2 border-ink relative">
+                    <div className="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-verdigris via-ink to-sienna opacity-30"></div>
+                    <div className="flex justify-center items-center space-x-4 mb-4">
+                        <div className="w-2 h-2 bg-verdigris rotate-45"></div>
+                        <p className="font-mono text-ink text-lg">
+                            Powered by{' '}
+                            <a href="/" className="text-verdigris hover:text-charcoal transition-colors duration-150 underline font-semibold">
+                                OneLink
+                            </a>
+                        </p>
+                        <div className="w-2 h-2 bg-verdigris rotate-45"></div>
+                    </div>
+                    <p className="font-mono text-ink text-sm opacity-70">Create your own link-in-bio page</p>
                 </div>
             </div>
         </div>
