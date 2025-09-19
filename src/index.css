@@ -1,0 +1,58 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+    body {
+        @apply bg-parchment font-mono text-charcoal;
+        background-image:
+            radial-gradient(circle at 1px 1px, rgba(112, 128, 144, 0.1) 1px, transparent 0);
+        background-size: 20px 20px;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        @apply font-serif;
+    }
+
+    input,
+    textarea,
+    select {
+        @apply bg-transparent border-b border-ink font-mono transition-colors;
+    }
+
+    input:focus,
+    textarea:focus,
+    select:focus {
+        @apply border-verdigris outline-none;
+    }
+}
+
+@layer components {
+    .btn-primary {
+        @apply bg-verdigris text-parchment uppercase font-mono shadow-sharp-sm transition-all duration-150 ease-mechanical;
+    }
+
+    .btn-primary:hover {
+        transform: translate(1px, 1px);
+        box-shadow: none;
+    }
+
+    .btn-primary:active {
+        transform: none;
+        @apply shadow-sharp-inset;
+    }
+
+    .card {
+        @apply bg-parchment border border-ink shadow-sharp;
+    }
+
+    .workshop-card {
+        @apply bg-parchment shadow-sharp;
+    }
+}
