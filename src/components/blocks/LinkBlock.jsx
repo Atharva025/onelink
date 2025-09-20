@@ -5,7 +5,9 @@ const LinkBlock = ({
     url,
     description,
     icon,
-    isVisible = true
+    isVisible = true,
+    theme = 'default',
+    themeClasses = {}
 }) => {
     if (!isVisible) return null
 
@@ -13,11 +15,16 @@ const LinkBlock = ({
         window.open(url, '_blank', 'noopener,noreferrer')
     }
 
+    // Use theme-aware classes or fallback to default
+    const linkClasses = themeClasses.link || 'bg-parchment border border-charcoal shadow-sharp-sm hover:translate-x-px hover:translate-y-px hover:shadow-none active:shadow-sharp-inset active:translate-x-0 active:translate-y-0 transition-all duration-150 ease-mechanical'
+    const textPrimary = themeClasses.text?.primary || 'text-charcoal font-mono'
+    const textSecondary = themeClasses.text?.secondary || 'text-ink font-mono'
+
     return (
         <div className="w-full mb-4">
             <button
                 onClick={handleClick}
-                className="w-full p-4 bg-parchment border border-charcoal shadow-sharp-sm hover:translate-x-px hover:translate-y-px hover:shadow-none active:shadow-sharp-inset active:translate-x-0 active:translate-y-0 transition-all duration-150 ease-mechanical text-left"
+                className={`w-full p-4 ${linkClasses} text-left`}
             >
                 <div className="flex items-center space-x-3">
                     {icon && (
@@ -34,11 +41,11 @@ const LinkBlock = ({
                     )}
 
                     <div className="flex-1 min-w-0">
-                        <h3 className="font-mono font-medium text-charcoal truncate">
+                        <h3 className={`font-medium ${textPrimary} truncate`}>
                             {title}
                         </h3>
                         {description && (
-                            <p className="text-sm font-mono text-ink mt-1 line-clamp-2">
+                            <p className={`text-sm ${textSecondary} mt-1 line-clamp-2`}>
                                 {description}
                             </p>
                         )}
@@ -46,7 +53,7 @@ const LinkBlock = ({
 
                     <div className="flex-shrink-0">
                         <svg
-                            className="w-5 h-5 text-ink"
+                            className={`w-5 h-5 ${textSecondary}`}
                             fill="none"
                             stroke="currentColor"
                             viewBox="0 0 24 24"

@@ -10,7 +10,9 @@ const QRCodeGenerator = ({
     showModal = false,
     onCloseModal,
     backgroundColor = '#ffffff',
-    foregroundColor = '#000000'
+    foregroundColor = '#000000',
+    theme = 'default',
+    themeClasses = {}
 }) => {
     const [qrCodeDataUrl, setQrCodeDataUrl] = useState('')
     const [isGenerating, setIsGenerating] = useState(false)
@@ -93,23 +95,28 @@ const QRCodeGenerator = ({
         <div className="text-center">
             {isGenerating ? (
                 <div className="flex flex-col items-center space-y-4">
-                    <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-600"></div>
-                    <p className="text-gray-600">Generating QR code...</p>
+                    <div className={`animate-spin rounded-full h-12 w-12 border-b-2 ${themeClasses.text?.primary ? 'border-current' : 'border-blue-600'}`}></div>
+                    <p className={themeClasses.text?.secondary || 'text-gray-600'}>Generating QR code...</p>
                 </div>
             ) : error ? (
                 <div className="text-red-600">
                     <p>{error}</p>
-                    <Button onClick={generateQRCode} className="mt-4">
+                    <Button
+                        onClick={generateQRCode}
+                        className="mt-4"
+                        theme={theme}
+                        themeClasses={themeClasses}
+                    >
                         Try Again
                     </Button>
                 </div>
             ) : qrCodeDataUrl ? (
                 <div className="space-y-6">
                     <div>
-                        <h3 className="text-lg font-semibold text-gray-900 mb-4">
+                        <h3 className={`text-lg font-semibold mb-4 ${themeClasses.text?.heading || 'text-gray-900'}`}>
                             {title}
                         </h3>
-                        <div className="inline-block p-4 bg-white border border-gray-200 rounded-lg shadow-sm">
+                        <div className={`inline-block p-4 bg-white border rounded-lg shadow-sm ${themeClasses.card ? '' : 'border-gray-200'}`}>
                             <img
                                 src={qrCodeDataUrl}
                                 alt={`QR code for ${title}`}
@@ -119,9 +126,9 @@ const QRCodeGenerator = ({
                         </div>
                     </div>
 
-                    <div className="text-sm text-gray-600 max-w-md mx-auto">
+                    <div className={`text-sm max-w-md mx-auto ${themeClasses.text?.secondary || 'text-gray-600'}`}>
                         <p className="mb-2">Scan this QR code to visit:</p>
-                        <p className="break-all bg-gray-50 p-2 rounded text-xs">
+                        <p className={`break-all p-2 rounded text-xs ${themeClasses.card ? themeClasses.card : 'bg-gray-50'}`}>
                             {url}
                         </p>
                     </div>
@@ -130,12 +137,16 @@ const QRCodeGenerator = ({
                         <Button
                             onClick={downloadQRCode}
                             variant="primary"
+                            theme={theme}
+                            themeClasses={themeClasses}
                         >
                             Download PNG
                         </Button>
                         <Button
                             onClick={copyToClipboard}
                             variant="outline"
+                            theme={theme}
+                            themeClasses={themeClasses}
                         >
                             Copy to Clipboard
                         </Button>

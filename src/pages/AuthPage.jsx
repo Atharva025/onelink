@@ -49,7 +49,7 @@ const AuthPage = () => {
                 <div className="absolute top-1/2 left-1/4 w-8 h-8 border-2 border-ink opacity-30 rotate-45"></div>
                 <div className="absolute top-1/3 right-1/3 w-6 h-6 border-2 border-verdigris opacity-30"></div>
             </div>
-            
+
             <div className="max-w-md w-full relative z-10">
                 {/* Logo and Header */}
                 <div className="text-center mb-12">
@@ -69,7 +69,7 @@ const AuthPage = () => {
                 <div className="bg-parchment border-2 border-ink shadow-sharp p-10 relative overflow-hidden group hover:shadow-sharp-sm transition-all duration-150 ease-mechanical">
                     {/* Subtle background accent */}
                     <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-verdigris opacity-10"></div>
-                    
+
                     {error && (
                         <div className="mb-8 p-6 bg-sienna bg-opacity-10 border-2 border-sienna text-sienna font-mono relative" role="alert">
                             <div className="absolute top-2 left-2 w-3 h-3 bg-sienna rotate-45"></div>

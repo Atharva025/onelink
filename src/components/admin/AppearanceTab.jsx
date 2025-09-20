@@ -1,13 +1,10 @@
-import React, { useState } from 'react'
-import ColorPicker from '../common/ColorPicker'
+import React, { useState, useEffect } from 'react'
 import Button from '../common/Button'
+import { getThemeClasses, getThemeColors, getThemeFonts, getFontClass } from '../../utils/themeUtils'
 
 const AppearanceTab = ({ appearance = {}, onAppearanceChange }) => {
     const [formData, setFormData] = useState({
         theme: 'light',
-        primaryColor: '#3B82F6',
-        backgroundColor: '#FFFFFF',
-        textColor: '#1F2937',
         font: 'inter',
         profileImage: '',
         bio: '',
@@ -16,19 +13,116 @@ const AppearanceTab = ({ appearance = {}, onAppearanceChange }) => {
         statusMessage: '',
         ...appearance
     })
+    const [saving, setSaving] = useState(false)
+    const [saveSuccess, setSaveSuccess] = useState(false)
+
+    // Sync with parent state when appearance prop changes
+    useEffect(() => {
+        setFormData({
+            theme: 'light',
+            font: 'inter',
+            profileImage: '',
+            bio: '',
+            slug: '',
+            fullName: '',
+            statusMessage: '',
+            ...appearance
+        })
+    }, [appearance])
 
     const themes = [
-        { id: 'light', name: 'Light', preview: 'bg-white text-gray-900' },
-        { id: 'dark', name: 'Dark', preview: 'bg-gray-900 text-white' },
-        { id: 'gradient', name: 'Gradient', preview: 'bg-gradient-to-br from-purple-400 to-pink-400 text-white' }
+        {
+            id: 'ethereal-glass',
+            name: 'Ethereal Glass',
+            preview: 'bg-ether-bg relative overflow-hidden',
+            description: 'Airy, sophisticated glass panels with soft, diffused lighting',
+            previewElements: (
+                <div className="absolute inset-0">
+                    <div className="w-full h-8 bg-ether-card backdrop-blur-sm border border-ether-border rounded-lg absolute top-2 left-2 right-2"></div>
+                    <div className="w-6 h-6 bg-ether-accent rounded-full absolute bottom-2 right-2 shadow-ether-accent-glow"></div>
+                </div>
+            )
+        },
+        {
+            id: 'neo-brutalist',
+            name: 'Neo-Brutalist Canvas',
+            preview: 'bg-brutal-bg relative overflow-hidden',
+            description: 'Bold, uncompromising design with sharp edges and strong typography',
+            previewElements: (
+                <div className="absolute inset-0">
+                    <div className="w-full h-8 bg-brutal-surface border-2 border-brutal-border absolute top-2 left-2 right-2"></div>
+                    <div className="w-6 h-6 bg-brutal-accent absolute bottom-2 right-2 shadow-brutal-sharp"></div>
+                </div>
+            )
+        },
+        {
+            id: 'cosmic-drift',
+            name: 'Cosmic Drift',
+            preview: 'bg-gradient-to-br from-cosmic-start via-cosmic-mid to-cosmic-end relative overflow-hidden',
+            description: 'Deep cosmic journey with expansive gradients and ethereal glows',
+            previewElements: (
+                <div className="absolute inset-0">
+                    <div className="w-full h-8 bg-cosmic-card border border-cosmic-mid/50 rounded-lg absolute top-2 left-2 right-2"></div>
+                    <div className="w-6 h-6 bg-cosmic-accent rounded-full absolute bottom-2 right-2 shadow-cosmic-glow"></div>
+                    <div className="w-1 h-1 bg-cosmic-text-light rounded-full absolute top-4 left-4"></div>
+                    <div className="w-1 h-1 bg-cosmic-text-light rounded-full absolute top-6 right-6"></div>
+                </div>
+            )
+        },
+        {
+            id: 'art-deco',
+            name: 'Art Deco Revival',
+            preview: 'bg-deco-bg relative overflow-hidden',
+            description: 'Luxurious 1920s glamour with rich jewel tones and metallic accents',
+            previewElements: (
+                <div className="absolute inset-0">
+                    <div className="w-full h-8 bg-deco-surface border-2 border-deco-text-gold absolute top-2 left-2 right-2"></div>
+                    <div className="w-6 h-6 bg-deco-accent-emerald absolute bottom-2 right-2 shadow-deco-frame"></div>
+                    <div className="w-2 h-2 border border-deco-text-gold absolute top-3 right-3 rotate-45"></div>
+                </div>
+            )
+        },
+        {
+            id: 'zen-garden',
+            name: 'Zen Garden',
+            preview: 'bg-zen-bg relative overflow-hidden',
+            description: 'Tranquil minimalism inspired by traditional Japanese aesthetics',
+            previewElements: (
+                <div className="absolute inset-0">
+                    <div className="w-full h-8 bg-zen-surface border border-zen-border rounded-xl absolute top-2 left-2 right-2"></div>
+                    <div className="w-6 h-6 bg-zen-accent-green rounded-full absolute bottom-2 right-2 shadow-zen-soft"></div>
+                    <div className="w-4 h-1 bg-zen-border absolute bottom-4 left-4"></div>
+                </div>
+            )
+        }
     ]
 
     const fonts = [
-        { id: 'inter', name: 'Inter', className: 'font-sans' },
-        { id: 'roboto', name: 'Roboto', className: 'font-sans' },
-        { id: 'poppins', name: 'Poppins', className: 'font-sans' },
-        { id: 'playfair', name: 'Playfair Display', className: 'font-serif' },
-        { id: 'mono', name: 'JetBrains Mono', className: 'font-mono' }
+        { id: 'inter', name: 'Inter', className: 'font-sans', category: 'Default' },
+        { id: 'roboto', name: 'Roboto', className: 'font-sans', category: 'Default' },
+        { id: 'poppins', name: 'Poppins', className: 'font-sans', category: 'Default' },
+        { id: 'playfair', name: 'Playfair Display', className: 'font-serif', category: 'Default' },
+        { id: 'mono', name: 'JetBrains Mono', className: 'font-mono', category: 'Default' },
+
+        // Ethereal Glass fonts
+        { id: 'ether-display', name: 'Montserrat', className: 'font-ether-display', category: 'Ethereal Glass' },
+        { id: 'ether-ui', name: 'Roboto', className: 'font-ether-ui', category: 'Ethereal Glass' },
+
+        // Neo-Brutalist fonts
+        { id: 'brutal-display', name: 'Anton', className: 'font-brutal-display', category: 'Neo-Brutalist' },
+        { id: 'brutal-ui', name: 'Space Mono', className: 'font-brutal-ui', category: 'Neo-Brutalist' },
+
+        // Cosmic Drift fonts
+        { id: 'cosmic-display', name: 'Orbitron', className: 'font-cosmic-display', category: 'Cosmic Drift' },
+        { id: 'cosmic-ui', name: 'Fira Code', className: 'font-cosmic-ui', category: 'Cosmic Drift' },
+
+        // Art Deco fonts
+        { id: 'deco-display', name: 'Cinzel Decorative', className: 'font-deco-display', category: 'Art Deco' },
+        { id: 'deco-ui', name: 'Gothic A1', className: 'font-deco-ui', category: 'Art Deco' },
+
+        // Zen Garden fonts
+        { id: 'zen-display', name: 'Noto Serif JP', className: 'font-zen-display', category: 'Zen Garden' },
+        { id: 'zen-ui', name: 'Lato', className: 'font-zen-ui', category: 'Zen Garden' }
     ]
 
     const handleInputChange = (field, value) => {
@@ -45,7 +139,26 @@ const AppearanceTab = ({ appearance = {}, onAppearanceChange }) => {
             [field]: processedValue
         }
         setFormData(updatedData)
-        onAppearanceChange(updatedData)
+        // Don't auto-save on every change, only save when user clicks save button
+    }
+
+    const handleSave = async () => {
+        if (validateSlug(formData.slug) !== null) {
+            return
+        }
+
+        setSaving(true)
+        setSaveSuccess(false)
+
+        try {
+            await onAppearanceChange(formData)
+            setSaveSuccess(true)
+            setTimeout(() => setSaveSuccess(false), 3000) // Clear success message after 3 seconds
+        } catch (error) {
+            console.error('Error saving appearance:', error)
+        } finally {
+            setSaving(false)
+        }
     }
 
     const validateSlug = (slug) => {
@@ -193,89 +306,99 @@ const AppearanceTab = ({ appearance = {}, onAppearanceChange }) => {
                 </div>
             </div>
 
-            {/* Color Customization */}
-            <div className="space-y-4">
-                <h3 className="text-lg font-serif font-semibold text-charcoal">Colors</h3>
-
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-                    <ColorPicker
-                        label="Primary Color"
-                        value={formData.primaryColor}
-                        onChange={(color) => handleInputChange('primaryColor', color)}
-                    />
-
-                    <ColorPicker
-                        label="Background Color"
-                        value={formData.backgroundColor}
-                        onChange={(color) => handleInputChange('backgroundColor', color)}
-                    />
-
-                    <ColorPicker
-                        label="Text Color"
-                        value={formData.textColor}
-                        onChange={(color) => handleInputChange('textColor', color)}
-                    />
-                </div>
-            </div>
-
             {/* Font Selection */}
             <div className="space-y-4">
-                <h3 className="text-lg font-medium">Typography</h3>
+                <h3 className="text-lg font-serif font-semibold text-charcoal">Typography</h3>
 
                 <div>
-                    <label className="block text-sm font-medium mb-2">
+                    <label className="block text-sm font-mono font-medium text-charcoal mb-2">
                         Font Family
                     </label>
                     <select
                         value={formData.font}
                         onChange={(e) => handleInputChange('font', e.target.value)}
-                        className="w-full px-3 py-2 border border-gray-300 rounded focus:outline-none focus:ring-2 focus:ring-blue-500"
+                        className="w-full px-3 py-2 border-2 border-ink bg-parchment text-charcoal font-mono shadow-sharp-sm focus:outline-none focus:ring-2 focus:ring-verdigris focus:border-verdigris"
                     >
-                        {fonts.map((font) => (
-                            <option key={font.id} value={font.id}>
-                                {font.name}
-                            </option>
-                        ))}
+                        {fonts.reduce((acc, font) => {
+                            if (!acc.find(item => item.category === font.category)) {
+                                if (acc.length > 0) {
+                                    acc.push({ type: 'separator' });
+                                }
+                                acc.push({ type: 'header', category: font.category });
+                            }
+                            acc.push(font);
+                            return acc;
+                        }, []).map((item, index) => {
+                            if (item.type === 'separator') {
+                                return <option key={`sep-${index}`} disabled>────────────</option>;
+                            }
+                            if (item.type === 'header') {
+                                return <option key={`header-${index}`} disabled style={{ fontWeight: 'bold' }}>{item.category} Theme</option>;
+                            }
+                            return (
+                                <option key={item.id} value={item.id} className={item.className}>
+                                    {item.name}
+                                </option>
+                            );
+                        })}
                     </select>
+                    <p className="text-xs font-mono text-ink mt-2">
+                        Choose fonts that complement your selected theme for the best visual harmony
+                    </p>
                 </div>
             </div>
 
             {/* Preview */}
             <div className="space-y-4">
-                <h3 className="text-lg font-medium">Preview</h3>
+                <h3 className="text-lg font-serif font-semibold text-charcoal">Preview</h3>
+                <p className="text-sm font-mono text-ink mb-4">See how your profile will look with the selected theme</p>
 
-                <div
-                    className="p-6 rounded-lg border-2 border-dashed border-gray-300"
-                    style={{
-                        backgroundColor: formData.backgroundColor,
-                        color: formData.textColor
-                    }}
-                >
-                    <div className="text-center">
-                        {formData.profileImage && (
-                            <img
-                                src={formData.profileImage}
-                                alt="Profile"
-                                className="w-16 h-16 rounded-full mx-auto mb-4 object-cover"
-                                onError={(e) => {
-                                    e.target.style.display = 'none'
-                                }}
-                            />
-                        )}
-                        <h3 className="text-xl font-bold mb-2" style={{ color: formData.primaryColor }}>
-                            {formData.fullName || 'Your Name'}
-                        </h3>
-                        {formData.bio && (
-                            <p className="text-sm opacity-80 mb-4">{formData.bio}</p>
-                        )}
-                        {formData.statusMessage && (
-                            <p className="text-xs opacity-60 mb-4">{formData.statusMessage}</p>
-                        )}
-                        <div
-                            className="px-4 py-2 rounded-lg inline-block"
-                            style={{ backgroundColor: formData.primaryColor, color: 'white' }}
-                        >
-                            Sample Link
+                <div className={`p-8 border-2 border-ink relative overflow-hidden transition-all duration-300 ${getThemeClasses(formData.theme, 'page')} ${getFontClass(formData.font)}`}>
+                    {/* Theme-specific background elements */}
+                    {formData.theme === 'cosmic-drift' && (
+                        <>
+                            <div className="absolute top-2 left-4 w-1 h-1 bg-cosmic-text-light rounded-full opacity-70"></div>
+                            <div className="absolute top-6 right-8 w-1 h-1 bg-cosmic-text-light rounded-full opacity-50"></div>
+                            <div className="absolute bottom-4 left-8 w-1 h-1 bg-cosmic-text-light rounded-full opacity-60"></div>
+                        </>
+                    )}
+                    {formData.theme === 'art-deco' && (
+                        <div className="absolute top-2 right-2 w-3 h-3 border border-deco-text-gold rotate-45 opacity-30"></div>
+                    )}
+                    {formData.theme === 'zen-garden' && (
+                        <div className="absolute bottom-2 left-4 w-8 h-1 bg-zen-border opacity-50"></div>
+                    )}
+
+                    <div className={`${getThemeClasses(formData.theme, 'card')} p-6 relative z-10`}>
+                        <div className="text-center">
+                            {formData.profileImage && (
+                                <div className="relative inline-block mb-4">
+                                    <img
+                                        src={formData.profileImage}
+                                        alt="Profile"
+                                        className="w-16 h-16 rounded-full mx-auto object-cover border-2 border-current opacity-80"
+                                        onError={(e) => {
+                                            e.target.style.display = 'none'
+                                        }}
+                                    />
+                                </div>
+                            )}
+                            <h3 className={`text-xl font-bold mb-2 ${getThemeClasses(formData.theme, 'text').heading}`}>
+                                {formData.fullName || 'Your Name'}
+                            </h3>
+                            {formData.bio && (
+                                <p className={`text-sm mb-4 ${getThemeClasses(formData.theme, 'text').secondary}`}>
+                                    {formData.bio}
+                                </p>
+                            )}
+                            {formData.statusMessage && (
+                                <p className={`text-xs mb-6 italic ${getThemeClasses(formData.theme, 'text').secondary}`}>
+                                    {formData.statusMessage}
+                                </p>
+                            )}
+                            <div className={`px-4 py-2 inline-block transition-all duration-150 ${getThemeClasses(formData.theme, 'button')}`}>
+                                Sample Link
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -283,13 +406,23 @@ const AppearanceTab = ({ appearance = {}, onAppearanceChange }) => {
 
             {/* Save Button */}
             <div className="pt-4 border-t">
-                <Button
-                    onClick={() => onAppearanceChange(formData)}
-                    disabled={validateSlug(formData.slug) !== null}
-                    className={validateSlug(formData.slug) ? 'opacity-50 cursor-not-allowed' : ''}
-                >
-                    Save Appearance Settings
-                </Button>
+                <div className="flex items-center space-x-4">
+                    <Button
+                        onClick={handleSave}
+                        disabled={validateSlug(formData.slug) !== null || saving}
+                        className={validateSlug(formData.slug) ? 'opacity-50 cursor-not-allowed' : ''}
+                    >
+                        {saving ? 'Saving...' : 'Save Appearance Settings'}
+                    </Button>
+                    {saveSuccess && (
+                        <div className="flex items-center space-x-2 text-green-600">
+                            <div className="w-5 h-5 bg-green-500 rounded-full flex items-center justify-center">
+                                <span className="text-white text-xs">✓</span>
+                            </div>
+                            <span className="font-mono text-sm">Settings saved successfully!</span>
+                        </div>
+                    )}
+                </div>
                 {validateSlug(formData.slug) && (
                     <p className="text-sm text-red-500 mt-2">
                         Please fix the validation errors above before saving.

@@ -125,8 +125,6 @@ const AdminPage = () => {
     }
 
     const handleAppearanceChange = async (newProfile) => {
-        setProfile(newProfile)
-
         try {
             console.log('Saving profile for user:', user?.id)
             console.log('New profile data:', newProfile)
@@ -134,12 +132,12 @@ const AdminPage = () => {
             // Validate slug before saving
             if (newProfile.slug) {
                 if (newProfile.slug.length <= 3) {
-                    console.error('Profile slug must be more than 3 characters long.')
-                    return
+                    alert('Profile slug must be more than 3 characters long.')
+                    throw new Error('Profile slug must be more than 3 characters long.')
                 }
                 if (!/^[a-zA-Z0-9_-]+$/.test(newProfile.slug)) {
-                    console.error('Profile slug can only contain letters, numbers, underscores, and hyphens.')
-                    return
+                    alert('Profile slug can only contain letters, numbers, underscores, and hyphens.')
+                    throw new Error('Profile slug can only contain letters, numbers, underscores, and hyphens.')
                 }
             }
 
@@ -174,19 +172,25 @@ const AdminPage = () => {
 
                 // Log specific error messages for common issues
                 if (error.code === '23514' && error.message.includes('profiles_slug_check')) {
-                    console.error('Invalid profile slug. It must be more than 3 characters and contain only letters, numbers, underscores, and hyphens.')
+                    alert('Invalid profile slug. It must be more than 3 characters and contain only letters, numbers, underscores, and hyphens.')
+                    throw new Error('Invalid profile slug. It must be more than 3 characters and contain only letters, numbers, underscores, and hyphens.')
                 } else if (error.code === '23505' && error.message.includes('profiles_slug_key')) {
-                    console.error('This profile slug is already taken. Please choose a different one.')
+                    alert('This profile slug is already taken. Please choose a different one.')
+                    throw new Error('This profile slug is already taken. Please choose a different one.')
                 } else {
-                    console.error(`Failed to save profile settings: ${error.message || 'Unknown error'}. Please try again.`)
+                    alert(`Failed to save profile settings: ${error.message || 'Unknown error'}. Please try again.`)
+                    throw new Error(`Failed to save profile settings: ${error.message || 'Unknown error'}. Please try again.`)
                 }
             } else {
                 console.log('Profile saved successfully')
+                // Update local state with the saved data
+                setProfile(newProfile)
             }
         } catch (error) {
             console.error('Error saving profile:', error)
             console.error('Error details:', JSON.stringify(error, null, 2))
-            console.error(`An unexpected error occurred while saving: ${error.message || 'Unknown error'}`)
+            // Re-throw the error so the AppearanceTab can handle it
+            throw error
         }
     }
 
@@ -215,7 +219,7 @@ const AdminPage = () => {
                     <div className="absolute bottom-40 left-20 w-5 h-5 bg-sienna border border-ink shadow-sharp-sm rotate-45"></div>
                     <div className="absolute bottom-20 right-16 w-3 h-3 bg-verdigris border border-ink shadow-sharp-sm"></div>
                 </div>
-                
+
                 <div className="text-center relative z-10">
                     <div className="w-16 h-16 bg-verdigris border-2 border-ink shadow-sharp flex items-center justify-center mx-auto mb-6 animate-pulse">
                         <span className="text-parchment font-serif font-bold text-xl">OL</span>
@@ -224,8 +228,8 @@ const AdminPage = () => {
                     <p className="font-mono text-charcoal text-lg">Loading your workshop...</p>
                     <div className="mt-4 flex justify-center space-x-1">
                         <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce"></div>
-                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.1s'}}></div>
-                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{animationDelay: '0.2s'}}></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{ animationDelay: '0.1s' }}></div>
+                        <div className="w-2 h-2 bg-verdigris rounded-full animate-bounce" style={{ animationDelay: '0.2s' }}></div>
                     </div>
                 </div>
             </div>
@@ -243,7 +247,7 @@ const AdminPage = () => {
                 <div className="absolute top-1/2 left-16 w-8 h-8 border-2 border-ink opacity-30 rotate-45"></div>
                 <div className="absolute top-1/3 right-16 w-6 h-6 border-2 border-verdigris opacity-30"></div>
             </div>
-            
+
             {/* Header */}
             <header className="bg-parchment border-b-2 border-ink shadow-sharp relative z-10">
                 <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -291,7 +295,7 @@ const AdminPage = () => {
                 <div className="bg-parchment border-2 border-ink shadow-sharp relative overflow-hidden">
                     {/* Background accent for the main card */}
                     <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-verdigris opacity-10"></div>
-                    
+
                     {/* Tabs */}
                     <div className="border-b-2 border-ink bg-parchment relative">
                         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-verdigris via-ink to-sienna opacity-20"></div>
@@ -300,11 +304,10 @@ const AdminPage = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setActiveTab(tab.id)}
-                                    className={`py-6 px-2 border-b-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${
-                                        activeTab === tab.id
+                                    className={`py-6 px-2 border-b-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${activeTab === tab.id
                                             ? 'border-verdigris text-charcoal transform scale-105'
                                             : 'border-transparent text-ink hover:text-charcoal hover:border-ink hover:scale-105'
-                                    }`}
+                                        }`}
                                 >
                                     <span className="mr-3 text-xl group-hover:scale-110 transition-transform duration-150">{tab.icon}</span>
                                     {tab.label}

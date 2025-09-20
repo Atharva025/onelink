@@ -321,7 +321,7 @@ const DemoPage = () => {
                         <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-verdigris"></div>
                     </h1>
                     <p className="text-xl font-mono text-ink max-w-3xl mx-auto leading-relaxed mb-8">
-                        Explore real examples of how different creators, businesses, and influencers use OneLink 
+                        Explore real examples of how different creators, businesses, and influencers use OneLink
                         to showcase their content and connect with their audience.
                     </p>
                     <div className="inline-flex items-center space-x-2 bg-verdigris bg-opacity-10 border border-verdigris px-4 py-2">
@@ -333,7 +333,7 @@ const DemoPage = () => {
                 {/* Demo Selection Tabs */}
                 <div className="bg-parchment border-2 border-ink shadow-sharp mb-12 relative overflow-hidden">
                     <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-verdigris opacity-10"></div>
-                    
+
                     <div className="border-b-2 border-ink bg-parchment relative">
                         <div className="absolute bottom-0 left-0 w-full h-1 bg-gradient-to-r from-verdigris via-ink to-sienna opacity-20"></div>
                         <nav className="flex flex-wrap justify-center gap-4 p-6">
@@ -341,11 +341,10 @@ const DemoPage = () => {
                                 <button
                                     key={tab.id}
                                     onClick={() => setSelectedDemo(tab.id)}
-                                    className={`px-6 py-3 border-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${
-                                        selectedDemo === tab.id
+                                    className={`px-6 py-3 border-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${selectedDemo === tab.id
                                             ? 'border-verdigris bg-verdigris text-parchment shadow-sharp-sm'
                                             : 'border-ink text-charcoal hover:border-verdigris hover:text-verdigris hover:scale-105'
-                                    }`}
+                                        }`}
                                 >
                                     <span className="mr-3 text-xl group-hover:scale-110 transition-transform duration-150">{tab.icon}</span>
                                     {tab.label}
@@ -363,7 +362,7 @@ const DemoPage = () => {
                             {/* Profile Header */}
                             <div className="text-center mb-12 bg-parchment border-2 border-ink shadow-sharp p-12 relative overflow-hidden group hover:shadow-sharp-sm transition-all duration-150 ease-mechanical">
                                 <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-verdigris opacity-10"></div>
-                                
+
                                 {currentProfile.profile.avatar_url && (
                                     <div className="relative inline-block mb-6">
                                         <div className="absolute inset-0 bg-verdigris border-2 border-ink shadow-sharp rounded-full transform rotate-3"></div>
@@ -406,12 +405,12 @@ const DemoPage = () => {
                         <div className="sticky top-8">
                             <div className="bg-parchment border-2 border-ink shadow-sharp p-8 relative overflow-hidden">
                                 <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-ink opacity-10"></div>
-                                
+
                                 <h3 className="text-2xl font-serif font-bold text-charcoal mb-6 relative">
                                     What You're Seeing
                                     <div className="absolute -bottom-1 left-0 w-12 h-1 bg-ink"></div>
                                 </h3>
-                                
+
                                 <div className="space-y-6 font-mono text-ink">
                                     <div className="flex items-start space-x-3">
                                         <div className="w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm flex items-center justify-center text-parchment font-bold text-sm flex-shrink-0">
@@ -422,7 +421,7 @@ const DemoPage = () => {
                                             <p className="text-sm">Every element you see can be created in the admin panel</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start space-x-3">
                                         <div className="w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm flex items-center justify-center text-parchment font-bold text-sm flex-shrink-0">
                                             ✓
@@ -432,7 +431,7 @@ const DemoPage = () => {
                                             <p className="text-sm">Change colors, fonts, and layouts to match your brand</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start space-x-3">
                                         <div className="w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm flex items-center justify-center text-parchment font-bold text-sm flex-shrink-0">
                                             ✓
@@ -442,7 +441,7 @@ const DemoPage = () => {
                                             <p className="text-sm">Links, galleries, spotlights, and embedded media</p>
                                         </div>
                                     </div>
-                                    
+
                                     <div className="flex items-start space-x-3">
                                         <div className="w-6 h-6 bg-verdigris border border-ink shadow-sharp-sm flex items-center justify-center text-parchment font-bold text-sm flex-shrink-0">
                                             ✓
@@ -456,8 +455,8 @@ const DemoPage = () => {
 
                                 <div className="mt-8 pt-6 border-t-2 border-ink">
                                     <Link to="/auth">
-                                        <Button 
-                                            size="large" 
+                                        <Button
+                                            size="large"
                                             className="w-full transition-transform duration-150 ease-mechanical hover:scale-105"
                                         >
                                             Create Your OneLink
@@ -478,7 +477,7 @@ const DemoPage = () => {
                         <div className="absolute bottom-4 right-4 w-10 h-10 border-2 border-charcoal"></div>
                         <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-verdigris rotate-45 opacity-30"></div>
                     </div>
-                    
+
                     <h2 className="text-4xl font-serif font-bold text-charcoal mb-6 relative z-10">
                         Ready to Create Your Own?
                     </h2>
@@ -492,7 +491,7 @@ const DemoPage = () => {
                                 Get Started Free
                             </Button>
                         </Link>
-                        
+
                         <div className="flex items-center space-x-6 text-ink font-mono text-sm">
                             <div className="flex items-center space-x-2">
                                 <span className="w-2 h-2 bg-verdigris rounded-full"></span>

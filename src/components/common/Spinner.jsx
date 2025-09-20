@@ -21,7 +21,7 @@ const Spinner = ({ size = 'medium', color = 'verdigris', showLabel = false }) =>
             <div className="relative">
                 {/* Outer decorative square */}
                 <div className={`${sizeClasses[size]} border-2 border-ink opacity-20 absolute inset-0 rotate-45`}></div>
-                
+
                 {/* Main spinner */}
                 <div
                     className={`${sizeClasses[size]} ${colorClasses[color]} border-2 border-t-transparent animate-spin relative z-10`}
@@ -31,13 +31,13 @@ const Spinner = ({ size = 'medium', color = 'verdigris', showLabel = false }) =>
                 >
                     <span className="sr-only">Loading...</span>
                 </div>
-                
+
                 {/* Inner accent dot */}
                 <div className={`absolute inset-0 flex items-center justify-center z-20`}>
                     <div className={`w-1 h-1 bg-${color} animate-pulse`}></div>
                 </div>
             </div>
-            
+
             {showLabel && (
                 <p className="font-mono text-ink text-sm animate-pulse">Loading...</p>
             )}

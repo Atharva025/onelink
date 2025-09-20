@@ -60,7 +60,7 @@ const Modal = ({
             <div className={`bg-parchment border-2 border-ink shadow-sharp w-full ${sizeClasses[size]} max-h-screen overflow-y-auto relative transform transition-all duration-150 ease-mechanical hover:shadow-sharp-sm`}>
                 {/* Background accent */}
                 <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-verdigris opacity-10"></div>
-                
+
                 {(title || showCloseButton) && (
                     <div className="flex justify-between items-center p-8 border-b-2 border-ink relative">
                         {title && (

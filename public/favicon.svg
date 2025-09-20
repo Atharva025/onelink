@@ -1,0 +1,10 @@
+<svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <!-- Background with verdigris color -->
+  <rect width="32" height="32" fill="#40B5A1" rx="2"/>
+  <!-- Border with ink color -->
+  <rect x="1" y="1" width="30" height="30" fill="none" stroke="#708090" stroke-width="2" rx="1"/>
+  <!-- OL Text in parchment color with serif styling -->
+  <text x="16" y="18" font-family="serif" font-weight="bold" font-size="14" fill="#FDF6E3" text-anchor="middle" dominant-baseline="central">OL</text>
+  <!-- Subtle shadow effect -->
+  <rect x="2" y="2" width="28" height="28" fill="none" stroke="rgba(112, 128, 144, 0.3)" stroke-width="1" rx="1"/>
+</svg>
