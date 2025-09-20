@@ -300,17 +300,17 @@ const PublicProfilePage = () => {
                 )}
                 {(selectedTheme === 'ethereal-glass' || selectedTheme === 'default' || !selectedTheme) && (
                     <>
-                        <div className={`absolute top-32 left-10 w-6 h-6 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()} rotate-45`}></div>
-                        <div className={`absolute top-64 right-16 w-4 h-4 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()}`}></div>
-                        <div className={`absolute bottom-64 left-16 w-5 h-5 bg-sienna ${getBorderColor()} border ${getShadowClass()} rotate-45`}></div>
-                        <div className={`absolute bottom-32 right-10 w-3 h-3 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()}`}></div>
+                        <div className={`absolute top-32 left-4 sm:left-10 w-4 sm:w-6 h-4 sm:h-6 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()} rotate-45 hidden sm:block`}></div>
+                        <div className={`absolute top-64 right-8 sm:right-16 w-3 sm:w-4 h-3 sm:h-4 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()} hidden md:block`}></div>
+                        <div className={`absolute bottom-64 left-8 sm:left-16 w-4 sm:w-5 h-4 sm:h-5 bg-sienna ${getBorderColor()} border ${getShadowClass()} rotate-45 hidden md:block`}></div>
+                        <div className={`absolute bottom-32 right-4 sm:right-10 w-3 h-3 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()} hidden sm:block`}></div>
                     </>
                 )}
             </div>
 
-            <div className="max-w-2xl mx-auto px-4 py-12 relative z-10">
+            <div className="max-w-2xl mx-auto px-4 sm:px-6 py-8 sm:py-12 relative z-10">
                 {/* Profile Header */}
-                <div className={`text-center mb-12 ${cardClasses} p-12 relative overflow-hidden group hover:shadow-sharp-sm transition-all duration-150 ease-mechanical`}>
+                <div className={`text-center mb-8 sm:mb-12 ${cardClasses} p-6 sm:p-8 md:p-12 relative overflow-hidden group hover:shadow-sharp-sm transition-all duration-150 ease-mechanical`}>
                     {/* Theme-specific accents */}
                     {selectedTheme === 'ethereal-glass' && (
                         <div className="absolute top-0 right-0 w-0 h-0 border-l-[40px] border-l-transparent border-b-[40px] border-b-ether-accent opacity-10"></div>
@@ -341,21 +341,21 @@ const PublicProfilePage = () => {
                         </div>
                     )}
 
-                    <h1 className={`text-4xl md:text-5xl font-bold mb-4 relative ${textClasses.heading}`}>
+                    <h1 className={`text-3xl sm:text-4xl md:text-5xl font-bold mb-4 relative ${textClasses.heading} px-2 sm:px-0`}>
                         {profile?.full_name || profile?.slug || 'User Profile'}
-                        <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 ${getAccentColor()}`}></div>
+                        <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 sm:w-20 h-1 ${getAccentColor()}`}></div>
                     </h1>
 
                     {profile?.bio && (
-                        <p className={`text-xl max-w-lg mx-auto leading-relaxed mb-6 ${textClasses.secondary}`}>
+                        <p className={`text-lg sm:text-xl max-w-lg mx-auto leading-relaxed mb-6 ${textClasses.secondary} px-2 sm:px-0`}>
                             {profile.bio}
                         </p>
                     )}
 
                     {profile?.status_message && (
-                        <div className={`inline-flex items-center space-x-2 ${getAccentBgAndBorder()} border px-4 py-2`}>
+                        <div className={`inline-flex items-center space-x-2 ${getAccentBgAndBorder()} border px-3 sm:px-4 py-2 mx-2 sm:mx-0`}>
                             <div className={`w-2 h-2 ${getAccentColor()} rounded-full animate-pulse`}></div>
-                            <p className={`italic ${textClasses.secondary}`}>
+                            <p className={`italic ${textClasses.secondary} text-sm sm:text-base`}>
                                 {profile.status_message}
                             </p>
                         </div>
@@ -363,14 +363,14 @@ const PublicProfilePage = () => {
                 </div>
 
                 {/* Content Blocks */}
-                <div className="space-y-6 mb-12">
+                <div className="space-y-4 sm:space-y-6 mb-8 sm:mb-12">
                     {blocks.length === 0 ? (
-                        <div className={`text-center py-16 ${cardClasses} relative overflow-hidden`}>
+                        <div className={`text-center py-12 sm:py-16 ${cardClasses} relative overflow-hidden mx-2 sm:mx-0`}>
                             <div className="absolute top-0 right-0 w-0 h-0 border-l-[30px] border-l-transparent border-b-[30px] border-b-current opacity-10"></div>
-                            <div className={`w-16 h-16 ${getAccentColor()} ${getBorderColor()} border-2 ${getShadowClass()} flex items-center justify-center mx-auto mb-6`}>
-                                <span className={`${textClasses.primary} font-bold text-2xl`}>📄</span>
+                            <div className={`w-12 sm:w-16 h-12 sm:h-16 ${getAccentColor()} ${getBorderColor()} border-2 ${getShadowClass()} flex items-center justify-center mx-auto mb-6`}>
+                                <span className={`${textClasses.primary} font-bold text-xl sm:text-2xl`}>📄</span>
                             </div>
-                            <p className={`text-xl ${textClasses.primary}`}>No content to display yet.</p>
+                            <p className={`text-lg sm:text-xl ${textClasses.primary}`}>No content to display yet.</p>
                             <p className={`text-sm ${textClasses.secondary} opacity-70 mt-2`}>Check back later for updates!</p>
                         </div>
                     ) : (
@@ -380,18 +380,18 @@ const PublicProfilePage = () => {
 
                 {/* AMA Section */}
                 {questions.length > 0 && (
-                    <div className="mb-12">
-                        <div className="text-center mb-10">
-                            <h2 className={`text-3xl md:text-4xl ${textClasses.heading} font-bold relative inline-block`}>
+                    <div className="mb-8 sm:mb-12">
+                        <div className="text-center mb-8 sm:mb-10 px-2 sm:px-0">
+                            <h2 className={`text-2xl sm:text-3xl md:text-4xl ${textClasses.heading} font-bold relative inline-block`}>
                                 Ask Me Anything
-                                <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-16 h-1 ${getAccentColor()}`}></div>
+                                <div className={`absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-12 sm:w-16 h-1 ${getAccentColor()}`}></div>
                             </h2>
-                            <p className={`${textClasses.secondary} mt-4 text-lg`}>Explore recent conversations</p>
+                            <p className={`${textClasses.secondary} mt-4 text-base sm:text-lg`}>Explore recent conversations</p>
                         </div>
 
-                        <div className="space-y-6 mb-8">
+                        <div className="space-y-4 sm:space-y-6 mb-6 sm:mb-8">
                             {questions.slice(0, 3).map((qa, index) => (
-                                <div key={qa.id} className={`${cardClasses} p-8 group hover:${getShadowClass()} hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical relative overflow-hidden`}>
+                                <div key={qa.id} className={`${cardClasses} p-4 sm:p-6 md:p-8 group hover:${getShadowClass()} hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical relative overflow-hidden mx-2 sm:mx-0`}>
                                     <div className={`absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-current opacity-20`}></div>
                                     <div className={`absolute top-4 left-4 w-6 h-6 ${getAccentColor()} ${getBorderColor()} border ${getShadowClass()} flex items-center justify-center ${textClasses.primary} font-bold text-sm`}>
                                         Q
@@ -535,7 +535,17 @@ const PublicProfilePage = () => {
                     themeClasses={{
                         button: buttonClasses,
                         card: cardClasses,
-                        text: textClasses
+                        text: textClasses,
+                        backdrop: pageClasses.bg,
+                        container: `${cardClasses.bg} ${cardClasses.border} ${getShadowClass()}`,
+                        containerHover: getShadowClass(),
+                        accent: getAccentColor().replace('bg-', 'border-b-'),
+                        headerBorder: `border-b-2 ${getBorderColor().replace('border-', 'border-')}`,
+                        titleFont: textClasses.heading?.includes('font-') ? textClasses.heading.split(' ').find(c => c.startsWith('font-')) : 'font-serif',
+                        titleColor: textClasses.heading || textClasses.primary,
+                        titleAccent: getAccentColor(),
+                        contentFont: textClasses.body?.includes('font-') ? textClasses.body.split(' ').find(c => c.startsWith('font-')) : 'font-mono',
+                        contentColor: textClasses.primary || textClasses.body
                     }}
                 />
 

@@ -14,7 +14,7 @@ const DemoPage = () => {
             profile: {
                 full_name: "Alex Creative",
                 bio: "Digital artist & content creator sharing my journey through art, design, and creative adventures.",
-                avatar_url: "/src/components/demoImages/alex/alex.jpg",
+                avatar_url: "/images/alex/alex.jpg",
                 status_message: "Currently working on my new art series ✨"
             },
             blocks: [
@@ -23,7 +23,7 @@ const DemoPage = () => {
                     type: 'spotlight',
                     title: "Latest Art Collection: Digital Dreams",
                     description: "Explore my newest collection of digital artwork that blends reality with imagination. Each piece tells a story of our digital age.",
-                    image: "/src/components/demoImages/alex/latestArtCollection.avif",
+                    image: "/images/alex/latestArtCollection.avif",
                     link: "#",
                     buttonText: "View Collection"
                 },
@@ -46,10 +46,10 @@ const DemoPage = () => {
                     type: 'gallery',
                     title: "Behind the Scenes",
                     images: [
-                        { url: "/src/components/demoImages/alex/behindTheScenes1.avif", alt: "Artist workspace with paints and canvas" },
-                        { url: "/src/components/demoImages/alex/behindTheScenes2.avif", alt: "Creative process with art supplies" },
-                        { url: "/src/components/demoImages/alex/behindTheScenes3.avif", alt: "Painting in progress on easel" },
-                        { url: "/src/components/demoImages/alex/behindTheScenes4.avif", alt: "Digital art setup with tablet and stylus" }
+                        { url: "/images/alex/behindTheScenes1.avif", alt: "Artist workspace with paints and canvas" },
+                        { url: "/images/alex/behindTheScenes2.avif", alt: "Creative process with art supplies" },
+                        { url: "/images/alex/behindTheScenes3.avif", alt: "Painting in progress on easel" },
+                        { url: "/images/alex/behindTheScenes4.avif", alt: "Digital art setup with tablet and stylus" }
                     ]
                 },
                 {
@@ -72,7 +72,7 @@ const DemoPage = () => {
             profile: {
                 full_name: "TechFlow Solutions",
                 bio: "We help businesses streamline their workflows with cutting-edge technology solutions. From startups to enterprises.",
-                avatar_url: "/src/components/demoImages/techflow/techflowLogo.avif",
+                avatar_url: "/images/techflow/techflowLogo.avif",
                 status_message: "Now offering free consultations! 🚀"
             },
             blocks: [
@@ -81,7 +81,7 @@ const DemoPage = () => {
                     type: 'spotlight',
                     title: "Free Business Automation Consultation",
                     description: "Book a 30-minute call to discover how we can automate your business processes and save you hours every week.",
-                    image: "/src/components/demoImages/techflow/techflowAutomation.avif",
+                    image: "/images/techflow/techflowAutomation.avif",
                     link: "#",
                     buttonText: "Book Free Call"
                 },
@@ -111,10 +111,10 @@ const DemoPage = () => {
                     type: 'gallery',
                     title: "Our Team",
                     images: [
-                        { url: "/src/components/demoImages/techflow/team1.avif", alt: "Team collaboration in modern office" },
-                        { url: "/src/components/demoImages/techflow/team2.avif", alt: "Professional team member at work" },
-                        { url: "/src/components/demoImages/techflow/team3.avif", alt: "Business team meeting discussion" },
-                        { url: "/src/components/demoImages/techflow/team4.avif", alt: "Team leader presenting to colleagues" }
+                        { url: "/images/techflow/team1.avif", alt: "Team collaboration in modern office" },
+                        { url: "/images/techflow/team2.avif", alt: "Professional team member at work" },
+                        { url: "/images/techflow/team3.avif", alt: "Business team meeting discussion" },
+                        { url: "/images/techflow/team4.avif", alt: "Team leader presenting to colleagues" }
                     ]
                 },
                 {
@@ -130,7 +130,7 @@ const DemoPage = () => {
             profile: {
                 full_name: "Maya Lifestyle",
                 bio: "Lifestyle blogger sharing fashion, travel, and wellness tips. Living my best life and inspiring others to do the same! ✨",
-                avatar_url: "/src/components/demoImages/lifestyle_blogger/maya_profile.avif",
+                avatar_url: "/images/lifestyle_blogger/maya_profile.avif",
                 status_message: "Just got back from Bali! New content coming soon 🌴"
             },
             blocks: [
@@ -139,7 +139,7 @@ const DemoPage = () => {
                     type: 'spotlight',
                     title: "My Bali Travel Guide",
                     description: "Everything you need to know for the perfect Bali trip - from hidden gems to the best local food spots!",
-                    image: "/src/components/demoImages/lifestyle_blogger/bali_guide.avif",
+                    image: "/images/lifestyle_blogger/bali_guide.avif",
                     link: "#",
                     buttonText: "Read Guide"
                 },
@@ -169,10 +169,10 @@ const DemoPage = () => {
                     type: 'gallery',
                     title: "Latest Photos",
                     images: [
-                        { url: "/src/components/demoImages/lifestyle_blogger/gallery1.avif", alt: "Beautiful mountain landscape view" },
-                        { url: "/src/components/demoImages/lifestyle_blogger/gallery2.avif", alt: "Scenic mountain peak adventure" },
-                        { url: "/src/components/demoImages/lifestyle_blogger/gallery3.avif", alt: "Travel lifestyle photography" },
-                        { url: "/src/components/demoImages/lifestyle_blogger/gallery4.avif", alt: "Tropical beach paradise scene" }
+                        { url: "/images/lifestyle_blogger/gallery1.avif", alt: "Beautiful mountain landscape view" },
+                        { url: "/images/lifestyle_blogger/gallery2.avif", alt: "Scenic mountain peak adventure" },
+                        { url: "/images/lifestyle_blogger/gallery3.avif", alt: "Travel lifestyle photography" },
+                        { url: "/images/lifestyle_blogger/gallery4.avif", alt: "Tropical beach paradise scene" }
                     ]
                 },
                 {
@@ -195,7 +195,7 @@ const DemoPage = () => {
             profile: {
                 full_name: "Sound Wave Studios",
                 bio: "Independent musician and producer creating ambient electronic music. Available for collaborations and custom compositions.",
-                avatar_url: "/src/components/demoImages/music_producer/music_producer_profile.avif",
+                avatar_url: "/images/music_producer/music_producer_profile.avif",
                 status_message: "New album 'Digital Horizons' dropping next month! 🎵"
             },
             blocks: [
@@ -204,7 +204,7 @@ const DemoPage = () => {
                     type: 'spotlight',
                     title: "New Album: Digital Horizons",
                     description: "My latest collection of ambient electronic tracks exploring the intersection of technology and nature. Pre-order now!",
-                    image: "/src/components/demoImages/music_producer/album.avif",
+                    image: "/images/music_producer/album.avif",
                     link: "#",
                     buttonText: "Pre-order Now"
                 },
@@ -241,10 +241,10 @@ const DemoPage = () => {
                     type: 'gallery',
                     title: "Studio Sessions",
                     images: [
-                        { url: "/src/components/demoImages/music_producer/gallery1.avif", alt: "Professional music studio setup" },
-                        { url: "/src/components/demoImages/music_producer/gallery2.avif", alt: "Recording equipment and instruments" },
-                        { url: "/src/components/demoImages/music_producer/gallery3.avif", alt: "Mixing board in recording studio" },
-                        { url: "/src/components/demoImages/music_producer/gallery4.avif", alt: "Music production workspace" }
+                        { url: "/images/music_producer/gallery1.avif", alt: "Professional music studio setup" },
+                        { url: "/images/music_producer/gallery2.avif", alt: "Recording equipment and instruments" },
+                        { url: "/images/music_producer/gallery3.avif", alt: "Mixing board in recording studio" },
+                        { url: "/images/music_producer/gallery4.avif", alt: "Music production workspace" }
                     ]
                 }
             ]
@@ -342,8 +342,8 @@ const DemoPage = () => {
                                     key={tab.id}
                                     onClick={() => setSelectedDemo(tab.id)}
                                     className={`px-6 py-3 border-2 font-mono font-medium text-lg transition-all duration-150 ease-mechanical group ${selectedDemo === tab.id
-                                            ? 'border-verdigris bg-verdigris text-parchment shadow-sharp-sm'
-                                            : 'border-ink text-charcoal hover:border-verdigris hover:text-verdigris hover:scale-105'
+                                        ? 'border-verdigris bg-verdigris text-parchment shadow-sharp-sm'
+                                        : 'border-ink text-charcoal hover:border-verdigris hover:text-verdigris hover:scale-105'
                                         }`}
                                 >
                                     <span className="mr-3 text-xl group-hover:scale-110 transition-transform duration-150">{tab.icon}</span>

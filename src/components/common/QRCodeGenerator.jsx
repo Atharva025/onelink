@@ -163,6 +163,8 @@ const QRCodeGenerator = ({
                 onClose={onCloseModal}
                 title="QR Code Generator"
                 size="medium"
+                theme={theme}
+                themeClasses={themeClasses}
             >
                 <QRCodeContent />
             </Modal>

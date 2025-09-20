@@ -6,7 +6,9 @@ const EmbedBlock = ({
     url,
     title,
     type = 'auto',
-    isVisible = true
+    isVisible = true,
+    theme = 'default',
+    themeClasses = {}
 }) => {
     if (!isVisible || !url) return null
 
@@ -16,15 +18,15 @@ const EmbedBlock = ({
     if (isReactPlayerSupported) {
         // Handle as ReactPlayer media (YouTube, Spotify, etc.)
         return (
-            <div className="w-full mb-6">
+            <div className="w-full mb-4 sm:mb-6 mx-2 sm:mx-0">
                 {title && (
-                    <h3 className="text-lg font-display font-semibold text-white mb-4">
+                    <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${themeClasses.text?.primary || 'text-charcoal'} ${themeClasses.text?.heading || ''}`}>
                         {title}
                     </h3>
                 )}
 
-                <div className="relative bg-metal-900 border border-metal-700 rounded-md overflow-hidden">
-                    <div className="aspect-video">
+                <div className={`relative ${themeClasses.card?.bg || 'bg-parchment'} ${themeClasses.card?.border || 'border border-ink'} rounded-md overflow-hidden`}>
+                    <div className="aspect-video w-full">
                         <ReactPlayer
                             url={url}
                             width="100%"
@@ -59,14 +61,14 @@ const EmbedBlock = ({
         // Handle as iframe embed (for trusted domains)
         if (!isTrustedDomain(url)) {
             return (
-                <div className="w-full mb-6">
+                <div className="w-full mb-4 sm:mb-6 mx-2 sm:mx-0">
                     {title && (
-                        <h3 className="text-lg font-display font-semibold text-white mb-4">
+                        <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${themeClasses.text?.primary || 'text-charcoal'} ${themeClasses.text?.heading || ''}`}>
                             {title}
                         </h3>
                     )}
-                    <div className="bg-red-900/20 border border-red-700 rounded-md p-6 text-center">
-                        <p className="text-red-400 font-sans">
+                    <div className={`${themeClasses.card?.bg || 'bg-parchment'} ${themeClasses.card?.border || 'border border-ink'} rounded-md p-4 sm:p-6 text-center`}>
+                        <p className={`${themeClasses.text?.secondary || 'text-ink'} font-mono text-sm sm:text-base`}>
                             This embed is from an untrusted domain and cannot be displayed for security reasons.
                         </p>
                     </div>
@@ -83,20 +85,20 @@ const EmbedBlock = ({
 
         if (!safeIframe) {
             return (
-                <div className="w-full mb-6">
+                <div className="w-full mb-4 sm:mb-6 mx-2 sm:mx-0">
                     {title && (
-                        <h3 className="text-lg font-display font-semibold text-white mb-4">
+                        <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${themeClasses.text?.primary || 'text-charcoal'} ${themeClasses.text?.heading || ''}`}>
                             {title}
                         </h3>
                     )}
-                    <div className="bg-metal-800 border border-metal-700 rounded-md p-6 text-center">
-                        <p className="text-gray-300 font-sans">
+                    <div className={`${themeClasses.card?.bg || 'bg-parchment'} ${themeClasses.card?.border || 'border border-ink'} rounded-md p-4 sm:p-6 text-center`}>
+                        <p className={`${themeClasses.text?.secondary || 'text-ink'} font-mono text-sm sm:text-base`}>
                             Unable to create safe embed for this URL.
                             <a
                                 href={url}
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="text-glow-cyan hover:text-glow-cyan-dark underline ml-1 transition-colors duration-300"
+                                className={`${themeClasses.text?.accent || 'text-verdigris'} hover:opacity-80 underline ml-1 transition-colors duration-300`}
                             >
                                 Open in new tab
                             </a>
@@ -107,14 +109,14 @@ const EmbedBlock = ({
         }
 
         return (
-            <div className="w-full mb-6">
+            <div className="w-full mb-4 sm:mb-6 mx-2 sm:mx-0">
                 {title && (
-                    <h3 className="text-lg font-display font-semibold text-white mb-4">
+                    <h3 className={`text-base sm:text-lg font-semibold mb-3 sm:mb-4 ${themeClasses.text?.primary || 'text-charcoal'} ${themeClasses.text?.heading || ''}`}>
                         {title}
                     </h3>
                 )}
 
-                <div className="relative bg-metal-800 border border-metal-700 rounded-md overflow-hidden">
+                <div className={`relative ${themeClasses.card?.bg || 'bg-parchment'} ${themeClasses.card?.border || 'border border-ink'} rounded-md overflow-hidden`}>
                     <div
                         dangerouslySetInnerHTML={{ __html: safeIframe }}
                         className="w-full"
