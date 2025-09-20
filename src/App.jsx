@@ -6,6 +6,7 @@ import HomePage from './pages/HomePage'
 import AuthPage from './pages/AuthPage'
 import AdminPage from './pages/AdminPage'
 import PublicProfilePage from './pages/PublicProfilePage'
+import DemoPage from './pages/DemoPage'
 import NotFoundPage from './pages/NotFoundPage'
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
             {/* Public Routes */}
             <Route path="/" element={<HomePage />} />
             <Route path="/auth" element={<AuthPage />} />
+            <Route path="/demo" element={<DemoPage />} />
 
             {/* Protected Routes */}
             <Route

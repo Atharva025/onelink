@@ -50,7 +50,7 @@ const HomePage = () => {
                     <div className="absolute inset-0 flex justify-center items-center opacity-5">
                         <div className="w-96 h-96 border-4 border-verdigris rotate-45 transform"></div>
                     </div>
-                    
+
                     <div className="relative z-10">
                         <h1 className="text-5xl md:text-7xl lg:text-8xl font-serif font-bold text-charcoal mb-8 leading-tight">
                             One Link.
@@ -84,13 +84,25 @@ const HomePage = () => {
                                             Get Started Free
                                         </Button>
                                     </Link>
-                                    <div className="flex items-center space-x-2 text-ink font-mono text-sm">
-                                        <span className="w-2 h-2 bg-verdigris rounded-full"></span>
-                                        <span>No credit card required</span>
-                                    </div>
+                                    <Link to="/demo" className="group">
+                                        <Button
+                                            variant="outline"
+                                            size="large"
+                                            className="transform transition-all duration-150 ease-mechanical group-hover:scale-105"
+                                        >
+                                            👀 See Examples
+                                        </Button>
+                                    </Link>
                                 </>
                             )}
                         </div>
+
+                        {!user && (
+                            <div className="mt-6 flex items-center space-x-2 text-ink font-mono text-sm">
+                                <span className="w-2 h-2 bg-verdigris rounded-full"></span>
+                                <span>No credit card required</span>
+                            </div>
+                        )}
                     </div>
                 </div>
 
@@ -103,7 +115,7 @@ const HomePage = () => {
                             <div className="w-8 h-8 border-2 border-sienna"></div>
                         </div>
                     </div>
-                    
+
                     <div className="grid grid-cols-1 md:grid-cols-3 gap-12 relative z-10">
                         <div className="text-center group cursor-default">
                             <div className="w-20 h-20 bg-verdigris border-2 border-ink shadow-sharp flex items-center justify-center mx-auto mb-6 transition-all duration-150 ease-mechanical group-hover:shadow-sharp-sm group-hover:translate-x-1 group-hover:translate-y-1 relative overflow-hidden">
@@ -143,6 +155,61 @@ const HomePage = () => {
                                 Share videos, images, galleries, and more with embedded content blocks.
                             </p>
                         </div>
+                    </div>
+                </div>
+
+                {/* Demo Showcase Section */}
+                <div className="mt-32 relative">
+                    <div className="text-center mb-16">
+                        <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-6 relative inline-block">
+                            See OneLink in Action
+                            <div className="absolute -bottom-3 left-1/2 transform -translate-x-1/2 w-24 h-1 bg-verdigris"></div>
+                        </h2>
+                        <p className="font-mono text-ink text-lg max-w-2xl mx-auto leading-relaxed">
+                            Explore real examples from creators, businesses, and influencers
+                        </p>
+                    </div>
+
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
+                        <div className="bg-parchment border-2 border-ink shadow-sharp p-6 group hover:shadow-sharp-sm hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical cursor-pointer relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-verdigris opacity-20"></div>
+                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-150">🎨</div>
+                            <h4 className="font-serif font-semibold text-charcoal mb-2 text-lg group-hover:text-verdigris transition-colors duration-150">Digital Artist</h4>
+                            <p className="font-mono text-ink text-sm leading-relaxed">Portfolio, social links, and latest artwork showcase</p>
+                        </div>
+
+                        <div className="bg-parchment border-2 border-ink shadow-sharp p-6 group hover:shadow-sharp-sm hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical cursor-pointer relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-sienna opacity-20"></div>
+                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-150">💼</div>
+                            <h4 className="font-serif font-semibold text-charcoal mb-2 text-lg group-hover:text-verdigris transition-colors duration-150">Tech Business</h4>
+                            <p className="font-mono text-ink text-sm leading-relaxed">Services, team info, and consultation booking</p>
+                        </div>
+
+                        <div className="bg-parchment border-2 border-ink shadow-sharp p-6 group hover:shadow-sharp-sm hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical cursor-pointer relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-verdigris opacity-20"></div>
+                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-150">✨</div>
+                            <h4 className="font-serif font-semibold text-charcoal mb-2 text-lg group-hover:text-verdigris transition-colors duration-150">Lifestyle Blogger</h4>
+                            <p className="font-mono text-ink text-sm leading-relaxed">Social media, blog posts, and affiliate links</p>
+                        </div>
+
+                        <div className="bg-parchment border-2 border-ink shadow-sharp p-6 group hover:shadow-sharp-sm hover:translate-x-1 hover:translate-y-1 transition-all duration-150 ease-mechanical cursor-pointer relative overflow-hidden">
+                            <div className="absolute top-0 right-0 w-0 h-0 border-l-[20px] border-l-transparent border-b-[20px] border-b-sienna opacity-20"></div>
+                            <div className="text-4xl mb-4 group-hover:scale-110 transition-transform duration-150">🎵</div>
+                            <h4 className="font-serif font-semibold text-charcoal mb-2 text-lg group-hover:text-verdigris transition-colors duration-150">Music Producer</h4>
+                            <p className="font-mono text-ink text-sm leading-relaxed">Music streaming, collaboration requests, studio content</p>
+                        </div>
+                    </div>
+
+                    <div className="text-center">
+                        <Link to="/demo" className="group">
+                            <Button
+                                size="large"
+                                variant="outline"
+                                className="transform transition-all duration-150 ease-mechanical group-hover:scale-105"
+                            >
+                                👀 Explore All Demo Profiles
+                            </Button>
+                        </Link>
                     </div>
                 </div>
 
@@ -200,7 +267,7 @@ const HomePage = () => {
                             <div className="absolute bottom-4 right-4 w-10 h-10 border-2 border-charcoal"></div>
                             <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-32 h-32 border border-verdigris rotate-45 opacity-30"></div>
                         </div>
-                        
+
                         <div className="text-center relative z-10">
                             <h2 className="text-4xl md:text-5xl font-serif font-bold text-charcoal mb-6 relative">
                                 Ready to Create Your OneLink?
@@ -224,7 +291,7 @@ const HomePage = () => {
                                         </Button>
                                     </Link>
                                 )}
-                                
+
                                 <div className="flex items-center space-x-6 text-ink font-mono text-sm">
                                     <div className="flex items-center space-x-2">
                                         <span className="w-2 h-2 bg-verdigris rounded-full"></span>
@@ -266,7 +333,7 @@ const HomePage = () => {
                             <span className="text-ink opacity-50">•</span>
                             <span className="hover:text-verdigris transition-colors duration-150 cursor-pointer">Support</span>
                         </div>
-                        
+
                         {/* Decorative footer elements */}
                         <div className="absolute -top-4 left-1/4 w-2 h-2 bg-verdigris rotate-45"></div>
                         <div className="absolute -top-4 right-1/4 w-2 h-2 bg-sienna rotate-45"></div>
